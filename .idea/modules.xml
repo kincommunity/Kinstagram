@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Kinstrgam.iml" filepath="$PROJECT_DIR$/.idea/Kinstrgam.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\workspace\Kinstrgam\base\base.iml" filepath="D:\workspace\Kinstrgam\base\base.iml" />
+      <module fileurl="file://D:\workspace\Kinstrgam\feature\feature.iml" filepath="D:\workspace\Kinstrgam\feature\feature.iml" />
+      <module fileurl="file://D:\workspace\Kinstrgam\instantapp\instantapp.iml" filepath="D:\workspace\Kinstrgam\instantapp\instantapp.iml" />
+    </modules>
+  </component>
+</project>
