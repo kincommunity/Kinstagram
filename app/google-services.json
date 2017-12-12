@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "630940211743",
+    "firebase_url": "https://kinstagramandroid.firebaseio.com",
+    "project_id": "kinstagramandroid",
+    "storage_bucket": "kinstagramandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630940211743:android:ea1f0fa4b231397f",
+        "android_client_info": {
+          "package_name": "kin.com.kinstrgam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630940211743-75tsfev1opb7416dnv1i1rfr7t5nu8c8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnjD9IMiyg--RZUNmITpFEqY-P7uGkoDI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
