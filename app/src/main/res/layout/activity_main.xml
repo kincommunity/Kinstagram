@@ -2,8 +2,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainFrameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:visibility="invisible"
     tools:context="kin.com.kinstrgam.MainActivity">
 
     <LinearLayout
@@ -11,64 +13,31 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/horizlayout"
+        <TextView
+            android:id="@+id/user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="login"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-            <TextView
-                android:id="@+id/register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Register"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lin1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:visibility="visible">
+            android:gravity="center_horizontal"
+            android:scrollHorizontally="false"
+            android:text="user"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
-            <EditText
-                android:id="@+id/emailText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:singleLine="true"
-                android:text="Email"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:visibility="visible" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_weight="1"
+            android:background="@color/fui_bgTwitter"
+            android:scaleType="center"
+            app:srcCompat="@drawable/googleg_standard_color_18" />
 
-            <EditText
-                android:id="@+id/passwordText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:text="Password"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Login" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/addImageButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add Image" />
 
     </LinearLayout>
 
