@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardElevation="5dp"
+        card_view:contentPadding="5dp"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardMaxElevation="5dp"
+            >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:background="#ECEFF1">
+
+            <TextView
+                android:id="@+id/cardView_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:singleLine="true"
+                android:text="androidprimeinfo"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"/>
+
+
+            <ImageView
+                android:id="@+id/cardView_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardView_name"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_launcher"/>
+
+            <ImageView
+                android:id="@+id/cardView_pay"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@id/cardView_image"
+                android:layout_marginLeft="16dp"
+                android:src="@drawable/ic_pay"/>
+
+
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/cardView_pay"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:background="#BDBDBD"/>
+
+            <TextView
+                android:id="@+id/cardView_timestamp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divider"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:text="26 MINUTES AGO"
+                android:textSize="9sp"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
