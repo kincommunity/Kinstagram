@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
+                        .setLogo(R.drawable.kinstagram)
                         .setAvailableProviders(providers)
                         .build(),
                 RC_SIGN_IN);
