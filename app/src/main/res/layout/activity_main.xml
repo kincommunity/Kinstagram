@@ -1,44 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainFrameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="invisible"
     tools:context="kin.com.kinstrgam.MainActivity">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent"></FrameLayout>
 
-        <TextView
-            android:id="@+id/user_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:scrollHorizontally="false"
-            android:text="user"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_weight="1"
-            android:background="@color/fui_bgTwitter"
-            android:scaleType="center"
-            app:srcCompat="@drawable/googleg_standard_color_18" />
+</android.support.design.widget.CoordinatorLayout>
 
-        <Button
-            android:id="@+id/addImageButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Add Image" />
+<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:id="@+id/mainFrameLayout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:visibility="invisible"-->
+    <!--tools:context="kin.com.kinstrgam.MainActivity">-->
 
-    </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical">-->
 
-</FrameLayout>
+        <!--<TextView-->
+            <!--android:id="@+id/user_name"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center_horizontal"-->
+            <!--android:scrollHorizontally="false"-->
+            <!--android:text="user"-->
+            <!--android:textAppearance="@style/TextAppearance.AppCompat.Display1" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/imageView"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="46dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@color/fui_bgTwitter"-->
+            <!--android:scaleType="center"-->
+            <!--app:srcCompat="@drawable/googleg_standard_color_18" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/addImageButton"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="Add Image" />-->
+
+    <!--</LinearLayout>-->
+
+<!--</FrameLayout>-->

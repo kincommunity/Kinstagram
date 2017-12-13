@@ -9,10 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -24,25 +21,32 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
-
-import static android.view.View.VISIBLE;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
+
     private static final int RC_SIGN_IN = 123;
 
 
     private static final String APPLICATION_ID = "kinstagramandroid";
     private static final String API_KEY = "fakeKey";
     private static final String FIREBASE_APP_NAME = "firebaseAppName";
+
+
 
     public static FirebaseApp initializeApp(Context context) {
         try {
@@ -108,19 +112,9 @@ public class MainActivity extends AppCompatActivity {
         return " my string ";
     }
 
-    private static final int SELECT_PHOTO = 100;
-    Uri selectedImage;
-    FirebaseStorage storage;
-    StorageReference storageRef,imageRef;
-    ProgressDialog progressDialog;
-    UploadTask uploadTask;
-    ImageView imageView;
 
-    public void selectImage(View view) {
-        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-        photoPickerIntent.setType("image/*");
-        startActivityForResult(photoPickerIntent, SELECT_PHOTO);
-    }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -134,99 +128,17 @@ public class MainActivity extends AppCompatActivity {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 Toast.makeText(getApplicationContext(), "Registration Completed: " + user.getDisplayName(), Toast.LENGTH_LONG).show();
-                setContentView(R.layout.activity_main);
-                storage = FirebaseStorage.getInstance();
-                storageRef = storage.getReference();
+                //setContentView(R.layout.activity_main);
 
 
-                FrameLayout frameLayout = findViewById(R.id.mainFrameLayout);
-                frameLayout.setVisibility(VISIBLE);
-                TextView userTextView = findViewById(R.id.user_name);
-                userTextView.setText(user.getDisplayName());
-
-                imageView = findViewById(R.id.imageView);
-
-                Button addImageButton = findViewById(R.id.addImageButton);
+                Intent intent = new Intent(MainActivity.this, FeedListActivity.class);
+                startActivity(intent);
 
 
-                addImageButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        selectImage(v);
-                      }
-                });
-
-                // ...
             } else {
                 // Sign in failed, check response for error code
                 // ...
             }
-        } else if (requestCode == SELECT_PHOTO) {
-            if (resultCode == RESULT_OK) {
-                Toast.makeText(MainActivity.this,"Image selected, ",Toast.LENGTH_SHORT).show();
-                selectedImage = data.getData();
-                uploadImage(null);
-
-            }
         }
     }
-
-
-    public void uploadImage(View view) {
-        //create reference to images folder and assing a name to the file that will be uploaded
-        imageRef = storageRef.child("images/"+selectedImage.getLastPathSegment());
-
-        //creating and showing progress dialog
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMax(100);
-        progressDialog.setMessage("Uploading...");
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        progressDialog.show();
-        progressDialog.setCancelable(false);
-        //starting upload
-        uploadTask = imageRef.putFile(selectedImage);
-        // Observe state change events such as progress, pause, and resume
-        uploadTask.addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                //sets and increments value of progressbar
-                progressDialog.incrementProgressBy((int) progress);
-            }
-        });
-        // Register observers to listen for when the download is done or if it fails
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle unsuccessful uploads
-                Toast.makeText(MainActivity.this,"Error in uploading!",Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
-                Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                Toast.makeText(MainActivity.this,"Upload successful",Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
-                //showing the uploaded image in ImageView using the download url
-  /*              StorageReference dowloadRef = storage.getReferenceFromUrl(downloadUrl.toString());
-                dowloadRef.getBytes(1024*1024).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                    @Override
-                    public void onSuccess(byte[] bytes) {
-                        Bitmap myBitmap = BitmapFactory.decodeByteArray(bytes);
-
-                    }
-                });
-
-
-            //    ImageView myImage = (ImageView) findViewById(R.id.imageviewTest);
-
-                imageView.setImageBitmap(myBitmap);
-*/
-                Picasso.with(MainActivity.this).load(downloadUrl).into(imageView);
-            }
-        });
-    }
-
 }
