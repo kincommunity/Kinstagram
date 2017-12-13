@@ -2,6 +2,7 @@ package kin.com.kinstrgam;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,10 +40,16 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ImageViewHolde
 
     @Override
     public void onBindViewHolder(FeedAdapter.ImageViewHolder imageViewHolder, int position) {
-        FeedInfo feedInfo = _feedInfoList.get(position);
+        final FeedInfo feedInfo = _feedInfoList.get(position);
 
         imageViewHolder.imageNameTextView.setText(feedInfo.getName());
         imageViewHolder.timeStampTextView.setText(feedInfo.getTimeStamp());
+        imageViewHolder.cardPayView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("FeedAdapter"," Card Pay selected "+ feedInfo.getName() + " --> " + feedInfo.getImageUrl());
+            }
+        });
 
 
         Picasso.with(_context).load(feedInfo.getImageUrl()).into(imageViewHolder.imageView);
@@ -57,6 +64,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ImageViewHolde
         public ImageView imageView;
         public TextView imageNameTextView;
         public TextView timeStampTextView;
+        public ImageView cardPayView;
 
         public ImageViewHolder(View itemView) {
             super(itemView);
@@ -66,6 +74,8 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ImageViewHolde
             imageNameTextView = (TextView) itemView.findViewById(R.id.cardView_name);
 
             timeStampTextView = (TextView) itemView.findViewById(R.id.cardView_timestamp);
+
+            cardPayView = (ImageView) itemView.findViewById(R.id.cardView_pay);
         }
     }
 }
