@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -196,9 +198,9 @@ public class FeedListActivity extends AppCompatActivity {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
                 String currentDateTime = dateFormat.format(new Date());
 
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-
-                FeedInfo feedInfo = new FeedInfo("username", taskSnapshot.getDownloadUrl().toString(), currentDateTime);
+                FeedInfo feedInfo = new FeedInfo(user.getDisplayName(), taskSnapshot.getDownloadUrl().toString(), currentDateTime);
 
                 String ImageUploadId = databaseReference.push().getKey();
 
