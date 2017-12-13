@@ -54,8 +54,8 @@ public class FeedListActivity extends AppCompatActivity {
     UploadTask uploadTask;
 
 
-    // Creating List of ImageUploadInfo class.
-    List<FeedInfo> list = new ArrayList<>();
+    LinearLayoutManager mLayoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +73,11 @@ public class FeedListActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
         // Setting RecyclerView layout as LinearLayout.
-        recyclerView.setLayoutManager(new LinearLayoutManager(FeedListActivity.this));
+        mLayoutManager = new LinearLayoutManager(FeedListActivity.this);
+        mLayoutManager.setReverseLayout(true);
+        mLayoutManager.setStackFromEnd(true);
+
+        recyclerView.setLayoutManager(mLayoutManager);
 
         // Assign activity this to progress dialog.
         progressDialog = new ProgressDialog(FeedListActivity.this);
@@ -85,13 +89,12 @@ public class FeedListActivity extends AppCompatActivity {
         progressDialog.show();
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
-
         // Adding Add Value Event Listener to databaseReference.
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-
+                
+                List<FeedInfo> list = new ArrayList<>();
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
 
                     FeedInfo feedInfo = postSnapshot.getValue(FeedInfo.class);
