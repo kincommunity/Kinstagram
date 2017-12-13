@@ -141,7 +141,7 @@ public class FeedListActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d("kinstagram", "onActivityResult " + requestCode + " result: " + resultCode + " data: " + data);
+        Log.d(TAG, "onActivityResult " + requestCode + " result: " + resultCode + " data: " + data);
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == SELECT_PHOTO) {

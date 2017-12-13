@@ -47,7 +47,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ImageViewHolde
         imageViewHolder.cardPayView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("FeedAdapter"," Card Pay selected "+ feedInfo.getName() + " --> " + feedInfo.getImageUrl());
+                Log.d(TAG," Card Pay selected "+ feedInfo.getName() + " --> " + feedInfo.getImageUrl());
             }
         });
 
