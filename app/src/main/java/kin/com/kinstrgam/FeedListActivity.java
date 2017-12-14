@@ -146,8 +146,11 @@ public class FeedListActivity extends AppCompatActivity implements ActivityCompa
             }
         });
 
+        boolean hasPermission  = hasPermisssion();
+        if(!hasPermission){
+            requestPermissions();
+        }
 
-        requestPermissions();
         mCameraButton = findViewById(R.id.cameraButton);
         mCameraButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -156,10 +159,18 @@ public class FeedListActivity extends AppCompatActivity implements ActivityCompa
                 startActivityForResult(intent, TAKE_PHOTO);
             }
         });
-        mCameraButton.setClickable(false);
+        mCameraButton.setClickable(hasPermission);
+    }
+
+    private boolean hasPermisssion() {
+        return (ContextCompat.checkSelfPermission(FeedListActivity.this, Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED)
+                && (ContextCompat.checkSelfPermission(FeedListActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                == PackageManager.PERMISSION_GRANTED);
     }
 
     public void requestPermissions(){
+
         if(ContextCompat.checkSelfPermission(FeedListActivity.this,
                 Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED){
