@@ -18,6 +18,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import android.Manifest;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,6 +36,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,6 +44,12 @@ import java.util.List;
 import java.util.Locale;
 
 import kin.com.kinstrgam.Camera.CameraActivity;
+import kin.com.kinstrgam.model.Wallet;
+import kin.sdk.core.Balance;
+import kin.sdk.core.KinAccount;
+import kin.sdk.core.KinClient;
+import kin.sdk.core.ResultCallback;
+import kin.sdk.core.ServiceProvider;
 
 public class FeedListActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
@@ -48,8 +59,12 @@ public class FeedListActivity extends AppCompatActivity implements ActivityCompa
 
     private static final int PERMISSION_REQUEST_CAMERA = 0;
     private static final int PERMISSION_REQUEST_STORAGE = 1;
+    private KinClient kinClient;
+    private KinAccount kinAccount;
 
     private static final String DATABASE_PATH = "All_Image_Uploads_Database";
+    public static final String URL_GET_KIN = "http://kin-faucet.rounds.video/send?public_address=";
+
 
     FirebaseStorage storage;
     DatabaseReference databaseReference;
@@ -157,6 +172,19 @@ public class FeedListActivity extends AppCompatActivity implements ActivityCompa
             }
         });
         mCameraButton.setClickable(false);
+        ServiceProvider serviceProvider =  new ServiceProvider("http://parity.rounds.video:8545", ServiceProvider.NETWORK_ID_ROPSTEN);
+
+        try {
+            kinClient = new KinClient(getApplicationContext(), serviceProvider);
+            if(kinClient.hasAccount()){
+                kinAccount = kinClient.getAccount();
+            } else {
+                kinAccount = kinClient.createAccount(Wallet.PASSPHRASE);
+            }
+        }catch(Exception e){
+
+        }
+        getKin(kinAccount);
     }
 
     public void requestPermissions(){
@@ -251,6 +279,37 @@ public class FeedListActivity extends AppCompatActivity implements ActivityCompa
             }
         }
 
+    }
+
+    private void getKin(KinAccount account) {
+        if (account != null) {
+            account.getBalance(new ResultCallback<Balance>() {
+                @Override
+                public void onResult(Balance balance) {
+                    if(balance.value().compareTo(BigDecimal.TEN) < -1){
+                        //do noting
+                    }else {
+                        final String publicAddress = account.getPublicAddress();
+                        final String url = URL_GET_KIN + publicAddress;
+                        final RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+                        final StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                                response -> {
+                                    Log.d(TAG, "getKin: success");
+                                },
+                                e -> {
+                                    Log.d(TAG, "getKin: error");
+                                });
+                        stringRequest.setShouldCache(false);
+                        queue.add(stringRequest);
+                    }
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    Log.d(TAG, "getKin getbalance: error");
+                }
+            });
+        }
     }
 
     public void uploadImage() {
