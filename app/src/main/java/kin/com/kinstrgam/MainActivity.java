@@ -2,6 +2,7 @@ package kin.com.kinstrgam;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
@@ -17,12 +18,11 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     private static final String TAG = "MainActivity";
 
     private static final int RC_SIGN_IN = 123;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
