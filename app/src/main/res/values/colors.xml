@@ -10,4 +10,9 @@
     <color name="black">#000000</color>
     <color name="link_blue">#4d94ff</color>
     <color name="darkRed">#cc0000</color>
+
+    <color name="camera_cover_color">#502b2b2b</color>
+    <color name="camera_blue">#26beff</color>
+    <color name="camera_button_down_state">#8026beff</color>
+    <color name="camera_white_transparent">#4dffffff</color>
 </resources>

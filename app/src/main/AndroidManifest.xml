@@ -2,6 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kin.com.kinstrgam">
 
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name=
+        "android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature android:name="android.hardware.camera.flash"
+        android:required="false" />
+
     <application
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round">
@@ -29,6 +39,9 @@
         <activity android:name=".FeedListActivity"
             android:theme="@style/AppTheme.NoActionBar">
 
+        </activity>
+        <activity android:name=".Camera.CameraActivity"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 
