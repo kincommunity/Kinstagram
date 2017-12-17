@@ -1,4 +1,4 @@
-package kin.com.kinstrgam.Camera;
+package kin.com.kinstagram.Camera;
 
 
 import android.app.Activity;
@@ -23,8 +23,9 @@ import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Random;
 
-import kin.com.kinstrgam.R;
-import kin.com.kinstrgam.Util.ArcImageView;
+import kin.com.kinstagram.Util.ArcImageView;
+import kin.com.kinstagram.R;
+
 
 public class CameraActivity extends AppCompatActivity {
 

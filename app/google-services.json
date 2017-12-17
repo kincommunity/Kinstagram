@@ -8,12 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:630940211743:android:ea1f0fa4b231397f",
+        "mobilesdk_app_id": "1:630940211743:android:1bdacf11e5d52e36",
         "android_client_info": {
-          "package_name": "kin.com.kinstrgam"
+          "package_name": "kin.com.kinstagram"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "630940211743-p61g6dlmb80ttho3itlcneq8137bu8ss.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kin.com.kinstagram",
+            "certificate_hash": "2e7faeb6d675ea744b6ea66235847e2379184459"
+          }
+        },
         {
           "client_id": "630940211743-75tsfev1opb7416dnv1i1rfr7t5nu8c8.apps.googleusercontent.com",
           "client_type": 3
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "630940211743-75tsfev1opb7416dnv1i1rfr7t5nu8c8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

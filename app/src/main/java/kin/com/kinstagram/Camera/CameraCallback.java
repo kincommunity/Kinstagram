@@ -1,4 +1,4 @@
-package kin.com.kinstrgam.Camera;
+package kin.com.kinstagram.Camera;
 
 import android.content.Context;
 import android.graphics.ImageFormat;
