@@ -1,4 +1,4 @@
-package kin.com.kinstrgam.Util;
+package kin.com.kinstagram.Util;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -7,7 +7,8 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
-import kin.com.kinstrgam.R;
+import kin.com.kinstagram.R;
+
 
 /**
  * Created by kyungsoohong on 11/15/17.

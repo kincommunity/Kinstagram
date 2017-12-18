@@ -1,4 +1,4 @@
-package kin.com.kinstrgam;
+package kin.com.kinstagram;
 
 /**
  * Created by kyungsoohong on 12/13/17.

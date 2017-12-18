@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kin.com.kinstrgam.Camera.CameraActivity">
+    tools:context="kin.com.kinstagram.Camera.CameraActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -63,7 +63,7 @@
             tools:visibility="visible"/>
 
 
-            <kin.com.kinstrgam.Util.ArcImageView
+            <kin.com.kinstagram.Util.ArcImageView
                 android:id="@+id/shutter_button"
                 android:layout_width="64dp"
                 android:layout_height="64dp"

@@ -7,7 +7,7 @@ android {
 
 
     defaultConfig {
-        applicationId "kin.com.kinstrgam"
+        applicationId "kin.com.kinstagram"
         minSdkVersion 23
         targetSdkVersion 26
         versionCode 1

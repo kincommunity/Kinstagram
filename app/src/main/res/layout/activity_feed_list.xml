@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kin.com.kinstrgam.FeedListActivity">
+    tools:context="kin.com.kinstagram.FeedListActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

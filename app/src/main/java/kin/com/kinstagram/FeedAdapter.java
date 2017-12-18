@@ -1,4 +1,4 @@
-package kin.com.kinstrgam;
+package kin.com.kinstagram;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
